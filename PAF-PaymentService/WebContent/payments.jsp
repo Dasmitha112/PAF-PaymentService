@@ -21,7 +21,7 @@
  				<br> Type: 
  				<input id="type" name="type" type="text" class="form-control form-control-sm">
  				<br> Date: 
- 				<input id="date" name="date" type="text" class="form-control form-control-sm">
+ 				<input id="date" name="date" type="date" class="form-control form-control-sm">
  				<br> Description: 
  				<input id="description" name="description" type="text" class="form-control form-control-sm">
  				<br> Buyer Name:
