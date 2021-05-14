@@ -12,36 +12,26 @@ import java.util.Map;
 import java.util.Scanner;
 
 
-/**
- * Servlet implementation class PaymentAPI
- */
 @WebServlet("/PaymentAPI")
 public class PaymentAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	payment paymentObj = new payment();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
+	
     public PaymentAPI() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
+
 		String output = paymentObj.insertPayment( 
 				Integer.parseInt(request.getParameter("accountNo")),
 				Integer.parseInt(request.getParameter("amount")),
@@ -49,17 +39,13 @@ public class PaymentAPI extends HttpServlet {
 				request.getParameter("date"),
 				request.getParameter("description"),
 				request.getParameter("buyerName"));
-				// request.getParameter("orderid"), 
 				
-//				request.getParameter("amount"));
 				response.getWriter().write(output); 
 	}
 
-	/**
-	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
-	 */
+
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		
 		Map paras = getParasMap(request); 
 		 String output = paymentObj.updatePayment(paras.get("hidPaymentIDSave").toString(), 
@@ -69,15 +55,13 @@ public class PaymentAPI extends HttpServlet {
 				paras.get("date").toString(),
 				paras.get("description").toString(),
 				paras.get("buyerName").toString());
-//		paras.get("itemDesc").toString()); 
+ 
 		response.getWriter().write(output); 
 	}
 
-	/**
-	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
-	 */
+
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		Map paras = getParasMap(request); 
 		 String output = paymentObj.deletePayment(paras.get("id").toString()); 
 		response.getWriter().write(output); 
